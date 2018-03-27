@@ -21,8 +21,6 @@ spring:
       max-wait-millis: 200                        # 最长等待连接毫秒数
   application:
     name: microcloud-config-provider-dept               # 设置微服务名称
-  freemarker:
-    prefer-file-system-access: false              # 处理返回值为XML的问题
 # Mybatis配置
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
@@ -46,7 +44,7 @@ info:
   company.name: springclound-demo
   build.artifactId: $project.artifactId$
   build.version: $project.version$
-  build.context: 部门操作的微服务
+  build.context: 部门操作的dev微服务
 ---
 server:
   port: 8001
@@ -67,8 +65,7 @@ spring:
       max-wait-millis: 200                        # 最长等待连接毫秒数
   application:
     name: microcloud-config-provider-dept               # 设置微服务名称
-  freemarker:
-    prefer-file-system-access: false              # 处理返回值为XML的问题
+
 # Mybatis配置
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
@@ -92,5 +89,5 @@ info:
   company.name: springclound-demo
   build.artifactId: $project.artifactId$
   build.version: $project.version$
-  build.context: 部门操作的微服务
+  build.context: 部门操作的beta微服务
 
