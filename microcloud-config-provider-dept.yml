@@ -1,0 +1,93 @@
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 8001
+# 数据连接池配置
+spring:
+  profiles: dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  # 使用的数据源类型
+    driver-class-name: com.mysql.jdbc.Driver      # 使用的数据库驱动
+    url: jdbc:mysql://localhost:3306/springclound8001?characterEncoding=utf-8   # 连接的数据库
+    username: root                                # 用户名
+    password: root                                # 用户密码
+    filters: stat,wall,log4j                      # druid监控
+    dbcp2:                                        # 数据库连接池GroupMapper.xml配置
+      max-idle: 5                                 # 数据库连接池的最小维持数
+      max-total: 20                               # 最大的连接数
+      initial-size: 5                             # 初始化连接数
+      max-wait-millis: 200                        # 最长等待连接毫秒数
+  application:
+    name: microcloud-config-provider-dept               # 设置微服务名称
+# Mybatis配置
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.microclound.vo
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml
+# eureka客户端配置
+eureka:
+  client: # 客户端注册Eureka
+    service-url:
+      # 添加安全认证
+      defaultZone: http://eurekadev:123@eureka-7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com # 在信息列表中显示名称
+    prefer-ip-address: true # 访问的路径变为IP
+    lease-renewal-interval-in-seconds: 2 # 设置心跳时间间隔(默认30秒)
+    lease-expiration-duration-in-seconds: 5 # 如果现在超过了5秒的间隔(默认90秒)，则表示当前的服务已宕机
+# 显示的微服务信息
+info:
+  app.name: microclound-demo
+  company.name: springclound-demo
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+  build.context: 部门操作的dev微服务
+---
+server:
+  port: 8001
+# 数据连接池配置
+spring:
+  profiles: beta
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  # 使用的数据源类型
+    driver-class-name: com.mysql.jdbc.Driver      # 使用的数据库驱动
+    url: jdbc:mysql://localhost:3306/springclound8001?characterEncoding=utf-8   # 连接的数据库
+    username: root                                # 用户名
+    password: root                                # 用户密码
+    filters: stat,wall,log4j                      # druid监控
+    dbcp2:                                        # 数据库连接池GroupMapper.xml配置
+      max-idle: 5                                 # 数据库连接池的最小维持数
+      max-total: 20                               # 最大的连接数
+      initial-size: 5                             # 初始化连接数
+      max-wait-millis: 200                        # 最长等待连接毫秒数
+  application:
+    name: microcloud-config-provider-dept               # 设置微服务名称
+
+# Mybatis配置
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.microclound.vo
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml
+# eureka客户端配置
+eureka:
+  client: # 客户端注册Eureka
+    service-url:
+      # 添加安全认证
+      defaultZone: http://eurekabeta:123@eureka-7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com # 在信息列表中显示名称
+    prefer-ip-address: true # 访问的路径变为IP
+    lease-renewal-interval-in-seconds: 2 # 设置心跳时间间隔(默认30秒)
+    lease-expiration-duration-in-seconds: 5 # 如果现在超过了5秒的间隔(默认90秒)，则表示当前的服务已宕机
+# 显示的微服务信息
+info:
+  app.name: microclound-demo
+  company.name: springclound-demo
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+  build.context: 部门操作的beta微服务
+
