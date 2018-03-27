@@ -10,7 +10,7 @@ spring:
     name: microconfig-config-client
 eureka:
   client:
-    server-url:
+    service-url:
       defaultZone: http://edmin:123@eureka-dev.com:7001/eureka
     
 ---
@@ -22,6 +22,6 @@ spring:
     name: microconfig-config-client
 eureka:
   client:
-    server-url:
+    service-url:
       defaultZone: http://edmin:123@eureka-beta.com:7001/eureka
 
