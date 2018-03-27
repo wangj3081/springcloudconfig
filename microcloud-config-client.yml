@@ -2,15 +2,28 @@ spring:
   profiles:
     active: dev
 ---
+server:
+  port: 8201
 spring:
   profiles: dev
   application:
-    name: microconfig-test-dev
+    name: microconfig-config-client
+eureka:
+  client:
+    server-url:
+      defaultZone: http://edmin:123@eureka-dev.com:7001/eureka
+    
 ---
+server:
+  port: 8202
 spring:
-  profiles: default
+  profiles: dev
   application:
-    name: microconfig-test-default
+    name: microconfig-config-client
+eureka:
+  client:
+    server-url:
+      defaultZone: http://edmin:123@eureka-dev.com:7001/eureka
 ---
 spring:
   profiles: beta
